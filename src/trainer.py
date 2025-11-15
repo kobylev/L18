@@ -74,6 +74,11 @@ class LogisticRegressionTrainer:
             error = y_batch - p_hat
             gradients = X_batch.T @ error
 
+            # Apply regularization to gradients (if enabled)
+            if self.regularization is not None:
+                reg_gradient = self._compute_regularization_gradient()
+                gradients = gradients - reg_gradient  # Subtract because we're maximizing
+
             # Update beta coefficients (Gradient ASCENT)
             beta_old = self.beta.copy()
             self.beta = self.beta + self.learning_rate * gradients
@@ -103,6 +108,47 @@ class LogisticRegressionTrainer:
 
         return self
 
+    def _compute_regularization_gradient(self) -> np.ndarray:
+        """
+        Compute regularization gradient.
+
+        L1 Regularization (Lasso):
+            Penalty = lambda * |beta|
+            Gradient = lambda * sign(beta)
+
+        L2 Regularization (Ridge):
+            Penalty = lambda * beta^2
+            Gradient = 2 * lambda * beta
+
+        Note: We don't regularize the bias term (beta_0)
+
+        Returns:
+            Regularization gradient vector
+        """
+        reg_grad = np.zeros_like(self.beta)
+
+        if self.regularization == 'l1':
+            # L1: Gradient = lambda * sign(beta)
+            # Don't regularize bias (index 0)
+            reg_grad[1:] = self.lambda_reg * np.sign(self.beta[1:])
+
+        elif self.regularization == 'l2':
+            # L2: Gradient = 2 * lambda * beta
+            # Don't regularize bias (index 0)
+            reg_grad[1:] = 2 * self.lambda_reg * self.beta[1:]
+
+        elif self.regularization == 'elastic':
+            # Elastic Net: Combination of L1 and L2
+            # Gradient = lambda * (alpha * sign(beta) + (1-alpha) * 2 * beta)
+            # Using alpha = 0.5 for equal mix
+            alpha = 0.5
+            reg_grad[1:] = self.lambda_reg * (
+                alpha * np.sign(self.beta[1:]) +
+                (1 - alpha) * 2 * self.beta[1:]
+            )
+
+        return reg_grad
+
     def _store_history(self, log_likelihood: float, mse: float):
         """Store training metrics in history."""
         self.history['log_likelihood'].append(log_likelihood)
@@ -122,6 +168,12 @@ class LogisticRegressionTrainer:
             print(f"Batch mode: Mini-Batch (size={batch_size}, {batch_size/n_samples*100:.1f}% of data)")
         else:
             print(f"Batch mode: Full Batch (all {n_samples} samples)")
+
+        # Display regularization info
+        if self.regularization is not None:
+            print(f"Regularization: {self.regularization.upper()} (lambda={self.lambda_reg})")
+        else:
+            print(f"Regularization: None")
         print()
 
     def _print_progress(self, iteration: int, log_likelihood: float,

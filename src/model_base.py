@@ -21,7 +21,8 @@ class LogisticRegressionBase:
     """
 
     def __init__(self, learning_rate: float = 0.03, n_iterations: int = 10000,
-                 tolerance: float = 1e-6, batch_size: int = None):
+                 tolerance: float = 1e-6, batch_size: int = None,
+                 regularization: str = None, lambda_reg: float = 0.01):
         """
         Initialize the Logistic Regression base model.
 
@@ -30,11 +31,15 @@ class LogisticRegressionBase:
             n_iterations: Maximum number of iterations
             tolerance: Convergence tolerance
             batch_size: Size of mini-batches (None = full batch gradient ascent)
+            regularization: Regularization type ('l1', 'l2', or None)
+            lambda_reg: Regularization strength (higher = more regularization)
         """
         self.learning_rate = learning_rate
         self.n_iterations = n_iterations
         self.tolerance = tolerance
         self.batch_size = batch_size
+        self.regularization = regularization
+        self.lambda_reg = lambda_reg
         self.beta = None
         self.history = {
             'log_likelihood': [],
