@@ -1,41 +1,97 @@
-# Logistic Regression - Binary Classification Implementation
+# Logistic Regression From Scratch: Advanced Binary Classification
 
-A complete manual implementation of Logistic Regression using Gradient Ascent for binary classification, built from scratch without using sklearn's pre-built models.
+**A complete production-ready implementation of Logistic Regression with Gradient Ascent, K-Fold Cross-Validation, and L1/L2 Regularization - built entirely from scratch without sklearn.**
+
+[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Project Highlights
+
+- **Manual Implementation**: Complete gradient ascent algorithm from mathematical foundations
+- **Phase I Features**: Z-Score normalization, Mini-Batch training, Comprehensive metrics (Precision/Recall/F1)
+- **Phase II Features**: K-Fold Cross-Validation, L1/L2/Elastic Net Regularization, Grid Search
+- **Production-Ready**: Modular architecture, extensive documentation, real-world adaptation guide
+- **Educational**: Detailed mathematical explanations and step-by-step implementation analysis
+
+---
 
 **Navigation**: See [INDEX.md](INDEX.md) for complete project navigation and file index.
 
-**Quick Start**: See [QUICK_START.md](QUICK_START.md) for a condensed getting started guide.
+**Quick Start**: See [QUICK_START_IMPROVEMENTS.md](QUICK_START_IMPROVEMENTS.md) for a condensed getting started guide.
 
 **Architecture**: See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed modular design documentation.
 
 **Results Analysis**: Jump to [Results Analysis](#results-analysis) section for detailed explanation of outputs and metrics.
 
+**Advanced Features**: See [PHASE_II_IMPROVEMENTS.md](PHASE_II_IMPROVEMENTS.md) for K-Fold CV and Regularization documentation.
+
+---
+
+## Complete Feature Set
+
+| Category | Features | Status |
+|----------|----------|--------|
+| **Core Algorithm** | Manual Gradient Ascent (no sklearn) | ✅ |
+| | Sigmoid activation function | ✅ |
+| | Log-likelihood maximization | ✅ |
+| | Automatic convergence detection | ✅ |
+| **Phase I Improvements** | Z-Score normalization | ✅ |
+| | Mini-Batch gradient ascent | ✅ |
+| | Precision, Recall, F1 Score metrics | ✅ |
+| | Real-world dataset adaptation guide | ✅ |
+| **Phase II Improvements** | K-Fold Cross-Validation | ✅ |
+| | Stratified K-Fold | ✅ |
+| | L1 Regularization (Lasso) | ✅ |
+| | L2 Regularization (Ridge) | ✅ |
+| | Elastic Net Regularization | ✅ |
+| | Grid Search with CV | ✅ |
+| **Visualizations** | Classification plot with decision boundary | ✅ |
+| | Convergence plots (Log-likelihood & MSE) | ✅ |
+| | Comprehensive results tables | ✅ |
+| **Architecture** | Modular design (8 separate modules) | ✅ |
+| | Extensive documentation (6 MD files) | ✅ |
+| | Test set validation | ✅ |
+
+## Quick Demo
+
+```python
+from src import LogisticRegression, generate_synthetic_data, normalize_features
+from src import cross_validate, grid_search_cv
+
+# Generate data and normalize
+X, y = generate_synthetic_data(n_samples_per_class=1000)
+X_norm, params = normalize_features(X, method='zscore')
+
+# Train with regularization
+model = LogisticRegression(
+    learning_rate=0.03,
+    batch_size=512,           # Mini-batch for scalability
+    regularization='l2',      # Ridge regularization
+    lambda_reg=0.01
+)
+model.fit(X_norm, y)
+
+# K-Fold Cross-Validation
+cv_results = cross_validate(X_norm, y, model_params={'learning_rate': 0.03}, k=5)
+print(f"Mean F1 Score: {cv_results['mean_scores']['f1_score']:.4f}")
+
+# Grid Search for best hyperparameters
+param_grid = {
+    'learning_rate': [0.01, 0.03, 0.1],
+    'regularization': [None, 'l1', 'l2'],
+    'lambda_reg': [0.0, 0.01, 0.1]
+}
+best = grid_search_cv(X_norm, y, param_grid, k=5)
+```
+
 ## Overview
 
-This project implements the PRD specifications for a Logistic Regression classifier that:
+This project implements a complete Logistic Regression classifier from mathematical foundations to production features:
 - Uses the **Sigmoid function** for probability estimation
 - Employs **Gradient Ascent** to maximize the log-likelihood
 - Finds optimal β coefficients (β₀, β₁, β₂) for binary classification
-- Classifies two well-separated data clusters
-
-## Features
-
-### Core Implementation
-- Manual gradient ascent algorithm (no sklearn)
-- Sigmoid activation function: σ(Z) = 1 / (1 + e^(-Z))
-- Log-likelihood maximization
-- Automatic convergence detection
-
-### Data Generation
-- Synthetic dataset with two separable clusters
-- Normalized features in [0, 1] range
-- Configurable sample size (default: 5,000 per class)
-
-### Deliverables
-1. **Results Table**: Predictions, errors, and MSE
-2. **Classification Plot**: Data points with decision boundary
-3. **Convergence Plots**: Log-likelihood and MSE progression
-4. **Test Set Validation**: Generalization performance
+- Includes advanced features: Cross-validation, Regularization, Grid Search
+- Provides comprehensive evaluation metrics and visualizations
 
 ## Installation
 
