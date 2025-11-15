@@ -131,6 +131,11 @@ class LogisticRegressionTrainer:
 
             self._store_history(log_likelihood, mse, val_log_likelihood, val_mse)
 
+            # Update learning rate according to schedule
+            prev_val_loss = -self.history['val_log_likelihood'][-2] if len(self.history['val_log_likelihood']) > 1 else None
+            current_val_loss = -val_log_likelihood if val_log_likelihood is not None else None
+            self._update_learning_rate(iteration, current_val_loss, prev_val_loss)
+
             # Early stopping check
             if self.early_stopping and X_val is not None:
                 # Use negative log-likelihood as loss (lower is better)
@@ -212,6 +217,58 @@ class LogisticRegressionTrainer:
 
         return reg_grad
 
+    def _update_learning_rate(self, iteration: int, val_loss: float = None, prev_val_loss: float = None):
+        """
+        Update learning rate according to schedule.
+
+        Strategies:
+        - 'step': Decay by factor every N steps
+        - 'exponential': Exponential decay
+        - 'inverse': Inverse time decay
+        - 'adaptive': Increase/decrease based on validation performance
+
+        Args:
+            iteration: Current iteration number
+            val_loss: Current validation loss (for adaptive)
+            prev_val_loss: Previous validation loss (for adaptive)
+        """
+        if self.lr_schedule is None:
+            # No schedule, keep constant learning rate
+            self.current_lr = self.learning_rate
+            return
+
+        if self.lr_schedule == 'step':
+            # Step decay: lr = initial_lr * (decay_rate ^ floor(iteration / decay_steps))
+            decay_factor = self.lr_decay_rate ** (iteration // self.lr_decay_steps)
+            self.current_lr = self.initial_learning_rate * decay_factor
+
+        elif self.lr_schedule == 'exponential':
+            # Exponential decay: lr = initial_lr * (decay_rate ^ iteration)
+            self.current_lr = self.initial_learning_rate * (self.lr_decay_rate ** iteration)
+
+        elif self.lr_schedule == 'inverse':
+            # Inverse time decay: lr = initial_lr / (1 + decay_rate * iteration)
+            self.current_lr = self.initial_learning_rate / (1 + self.lr_decay_rate * iteration)
+
+        elif self.lr_schedule == 'adaptive':
+            # Adaptive: Increase if improving, decrease if not
+            if val_loss is not None and prev_val_loss is not None:
+                if val_loss < prev_val_loss:
+                    # Improving: slightly increase learning rate
+                    self.current_lr = min(self.current_lr * 1.05, self.initial_learning_rate)
+                else:
+                    # Not improving: decrease learning rate
+                    self.current_lr = self.current_lr * self.lr_decay_rate
+            else:
+                # No validation loss available, keep current
+                pass
+
+        # Apply minimum learning rate floor
+        self.current_lr = max(self.current_lr, self.lr_min)
+
+        # Update the actual learning rate used in training
+        self.learning_rate = self.current_lr
+
     def _store_history(self, log_likelihood: float, mse: float,
                        val_log_likelihood: float = None, val_mse: float = None):
         """Store training and validation metrics in history."""
@@ -220,6 +277,7 @@ class LogisticRegressionTrainer:
         self.history['beta_0'].append(self.beta[0])
         self.history['beta_1'].append(self.beta[1])
         self.history['beta_2'].append(self.beta[2])
+        self.history['learning_rate'].append(self.current_lr)
 
         if val_log_likelihood is not None:
             self.history['val_log_likelihood'].append(val_log_likelihood)
@@ -243,6 +301,12 @@ class LogisticRegressionTrainer:
             print(f"Regularization: {self.regularization.upper()} (lambda={self.lambda_reg})")
         else:
             print(f"Regularization: None")
+
+        # Display learning rate schedule info
+        if self.lr_schedule is not None:
+            print(f"LR Schedule: {self.lr_schedule.upper()} (decay_rate={self.lr_decay_rate}, steps={self.lr_decay_steps})")
+        else:
+            print(f"LR Schedule: None (constant)")
         print()
 
     def _print_progress(self, iteration: int, log_likelihood: float,

@@ -10,7 +10,7 @@
 - **Manual Implementation**: Complete gradient ascent algorithm from mathematical foundations
 - **Phase I Features**: Z-Score normalization, Mini-Batch training, Comprehensive metrics (Precision/Recall/F1)
 - **Phase II Features**: K-Fold Cross-Validation, L1/L2/Elastic Net Regularization, Grid Search
-- **Phase III Features**: Early Stopping with validation monitoring (99%+ efficiency gains)
+- **Phase III Features**: Early Stopping + Learning Rate Scheduling (99%+ efficiency gains, adaptive optimization)
 - **Production-Ready**: Modular architecture, extensive documentation, real-world adaptation guide
 - **Educational**: Detailed mathematical explanations and step-by-step implementation analysis
 
@@ -26,7 +26,9 @@
 
 **Advanced Features**: See [PHASE_II_IMPROVEMENTS.md](PHASE_II_IMPROVEMENTS.md) for K-Fold CV and Regularization documentation.
 
-**Phase III Features**: See [PHASE_III_EARLY_STOPPING.md](PHASE_III_EARLY_STOPPING.md) for Early Stopping documentation.
+**Phase III Features**:
+- See [PHASE_III_EARLY_STOPPING.md](PHASE_III_EARLY_STOPPING.md) for Early Stopping documentation.
+- See [PHASE_III_LR_SCHEDULING.md](PHASE_III_LR_SCHEDULING.md) for Learning Rate Scheduling documentation.
 
 ---
 
@@ -52,6 +54,11 @@
 | | Validation monitoring | ✅ |
 | | Best parameter restoration | ✅ |
 | | Configurable patience | ✅ |
+| | Step decay LR schedule | ✅ |
+| | Exponential decay LR schedule | ✅ |
+| | Inverse time decay LR schedule | ✅ |
+| | Adaptive LR schedule | ✅ |
+| | LR history tracking | ✅ |
 | **Visualizations** | Classification plot with decision boundary | ✅ |
 | | Convergence plots (Log-likelihood & MSE) | ✅ |
 | | Comprehensive results tables | ✅ |

@@ -24,12 +24,14 @@ class LogisticRegressionBase:
                  tolerance: float = 1e-6, batch_size: int = None,
                  regularization: str = None, lambda_reg: float = 0.01,
                  early_stopping: bool = False, patience: int = 10,
-                 validation_split: float = 0.2):
+                 validation_split: float = 0.2,
+                 lr_schedule: str = None, lr_decay_rate: float = 0.95,
+                 lr_decay_steps: int = 100, lr_min: float = 1e-6):
         """
         Initialize the Logistic Regression base model.
 
         Args:
-            learning_rate: Learning step for gradient ascent
+            learning_rate: Initial learning step for gradient ascent
             n_iterations: Maximum number of iterations
             tolerance: Convergence tolerance
             batch_size: Size of mini-batches (None = full batch gradient ascent)
@@ -38,8 +40,13 @@ class LogisticRegressionBase:
             early_stopping: Whether to use early stopping based on validation loss
             patience: Number of iterations to wait for improvement before stopping
             validation_split: Fraction of training data to use for validation (0.0-1.0)
+            lr_schedule: Learning rate schedule ('step', 'exponential', 'inverse', 'adaptive', None)
+            lr_decay_rate: Decay rate for learning rate (0 < rate < 1)
+            lr_decay_steps: Number of steps between learning rate updates
+            lr_min: Minimum learning rate (floor value)
         """
         self.learning_rate = learning_rate
+        self.initial_learning_rate = learning_rate
         self.n_iterations = n_iterations
         self.tolerance = tolerance
         self.batch_size = batch_size
@@ -48,6 +55,10 @@ class LogisticRegressionBase:
         self.early_stopping = early_stopping
         self.patience = patience
         self.validation_split = validation_split
+        self.lr_schedule = lr_schedule
+        self.lr_decay_rate = lr_decay_rate
+        self.lr_decay_steps = lr_decay_steps
+        self.lr_min = lr_min
         self.beta = None
         self.history = {
             'log_likelihood': [],
@@ -56,11 +67,13 @@ class LogisticRegressionBase:
             'beta_1': [],
             'beta_2': [],
             'val_log_likelihood': [],
-            'val_mse': []
+            'val_mse': [],
+            'learning_rate': []
         }
         self.best_beta = None
         self.best_val_loss = None
         self.stopped_epoch = None
+        self.current_lr = learning_rate
 
     @staticmethod
     def sigmoid(z: np.ndarray) -> np.ndarray:
