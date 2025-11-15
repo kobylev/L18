@@ -1,0 +1,6 @@
+# Logistic Regression Binary Classification
+# Required Python packages
+
+numpy>=1.21.0
+matplotlib>=3.4.0
+pandas>=1.3.0

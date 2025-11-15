@@ -1,0 +1,213 @@
+C:\Ai_Expert\L18\L18\src\visualization.py:47: UserWarning: You passed both c and facecolor/facecolors for the markers. c has precedence over facecolor/facecolors. This behavior may change in the future.
+  plt.scatter(X[misclassified, 0], X[misclassified, 1],
+======================================================================
+LOGISTIC REGRESSION - BINARY CLASSIFICATION
+Manual Implementation using Gradient Ascent
+======================================================================
+
+======================================================================
+PHASE 1: DATA PREPARATION
+======================================================================
+
+Dataset created successfully!
+  Total samples: 10000
+  Class 0 samples: 5000
+  Class 1 samples: 5000
+  Features: X1, X2 (normalized to [0, 1])
+  X1 range: [0.000, 1.000]
+  X2 range: [0.000, 1.000]
+
+======================================================================
+PHASE 2: GRADIENT ASCENT IMPLEMENTATION
+======================================================================
+Starting Gradient Ascent...
+Initial beta: [ 0.00496714 -0.00138264  0.00647689]
+Learning rate: 0.03
+Max iterations: 10000
+
+Iteration    0 | Log-Likelihood: -6926.4498 | MSE: 0.249749 | beta change: 29.66241837
+Iteration    1 | Log-Likelihood: -86124.9207 | MSE: 0.499856 | beta change: 149.97797847
+Iteration    2 | Log-Likelihood: -172693.8820 | MSE: 0.500000 | beta change: 150.00000000
+Iteration    3 | Log-Likelihood: -169736.0804 | MSE: 0.500000 | beta change: 149.99995943
+Iteration    4 | Log-Likelihood: -172693.8820 | MSE: 0.500000 | beta change: 150.00000000
+Iteration    5 | Log-Likelihood: -172343.3888 | MSE: 0.500000 | beta change: 149.99999972
+Iteration    6 | Log-Likelihood: -45700.0748 | MSE: 0.294686 | beta change: 91.85290437
+Iteration    7 | Log-Likelihood: -137409.2123 | MSE: 0.466870 | beta change: 140.79361749
+Iteration    8 | Log-Likelihood: -128851.4003 | MSE: 0.473635 | beta change: 142.81504906
+Iteration    9 | Log-Likelihood: -163570.5622 | MSE: 0.492281 | beta change: 147.83415703
+Iteration  100 | Log-Likelihood:  -488.1484 | MSE: 0.004761 | beta change: 0.03377949
+Iteration  200 | Log-Likelihood:  -482.0941 | MSE: 0.004745 | beta change: 0.03303389
+Iteration  300 | Log-Likelihood:  -475.5368 | MSE: 0.004731 | beta change: 0.03231676
+Iteration  400 | Log-Likelihood:  -469.0596 | MSE: 0.004718 | beta change: 0.03163430
+Iteration  500 | Log-Likelihood:  -462.6599 | MSE: 0.004705 | beta change: 0.03099069
+Iteration  600 | Log-Likelihood:  -456.2891 | MSE: 0.004694 | beta change: 0.03038813
+Iteration  700 | Log-Likelihood:  -449.8629 | MSE: 0.004684 | beta change: 0.02982714
+Iteration  800 | Log-Likelihood:  -442.9988 | MSE: 0.004675 | beta change: 0.02930696
+Iteration  900 | Log-Likelihood:  -436.2559 | MSE: 0.004666 | beta change: 0.02882597
+Iteration 1000 | Log-Likelihood:  -429.5076 | MSE: 0.004657 | beta change: 0.02838200
+Iteration 1100 | Log-Likelihood:  -422.8133 | MSE: 0.004649 | beta change: 0.02797261
+Iteration 1200 | Log-Likelihood:  -416.1510 | MSE: 0.004641 | beta change: 0.02759524
+Iteration 1300 | Log-Likelihood:  -409.5032 | MSE: 0.004634 | beta change: 0.02724733
+Iteration 1400 | Log-Likelihood:  -402.8812 | MSE: 0.004626 | beta change: 0.02692643
+Iteration 1500 | Log-Likelihood:  -396.2829 | MSE: 0.004619 | beta change: 0.02663019
+Iteration 1600 | Log-Likelihood:  -389.7055 | MSE: 0.004611 | beta change: 0.02635642
+Iteration 1700 | Log-Likelihood:  -383.1501 | MSE: 0.004604 | beta change: 0.02610305
+Iteration 1800 | Log-Likelihood:  -376.6156 | MSE: 0.004596 | beta change: 0.02586819
+Iteration 1900 | Log-Likelihood:  -370.1028 | MSE: 0.004588 | beta change: 0.02565004
+Iteration 2000 | Log-Likelihood:  -363.6116 | MSE: 0.004580 | beta change: 0.02547964
+Iteration 2100 | Log-Likelihood:  -357.1424 | MSE: 0.004572 | beta change: 0.02554606
+Iteration 2200 | Log-Likelihood:  -350.6960 | MSE: 0.004564 | beta change: 0.02563347
+Iteration 2300 | Log-Likelihood:  -344.2731 | MSE: 0.004555 | beta change: 0.02570540
+Iteration 2400 | Log-Likelihood:  -337.8749 | MSE: 0.004547 | beta change: 0.02576271
+Iteration 2500 | Log-Likelihood:  -331.5023 | MSE: 0.004538 | beta change: 0.02580615
+Iteration 2600 | Log-Likelihood:  -325.1568 | MSE: 0.004528 | beta change: 0.02583634
+Iteration 2700 | Log-Likelihood:  -318.8399 | MSE: 0.004519 | beta change: 0.02585383
+Iteration 2800 | Log-Likelihood:  -312.5531 | MSE: 0.004509 | beta change: 0.02585905
+Iteration 2900 | Log-Likelihood:  -306.2984 | MSE: 0.004499 | beta change: 0.02585236
+Iteration 3000 | Log-Likelihood:  -300.0778 | MSE: 0.004488 | beta change: 0.02583399
+Iteration 3100 | Log-Likelihood:  -293.8935 | MSE: 0.004478 | beta change: 0.02580411
+Iteration 3200 | Log-Likelihood:  -287.7481 | MSE: 0.004467 | beta change: 0.02576278
+Iteration 3300 | Log-Likelihood:  -281.6442 | MSE: 0.004455 | beta change: 0.02570994
+Iteration 3400 | Log-Likelihood:  -275.5849 | MSE: 0.004443 | beta change: 0.02564544
+Iteration 3500 | Log-Likelihood:  -269.5733 | MSE: 0.004431 | beta change: 0.02556903
+Iteration 3600 | Log-Likelihood:  -263.6132 | MSE: 0.004419 | beta change: 0.02548031
+Iteration 3700 | Log-Likelihood:  -257.7085 | MSE: 0.004406 | beta change: 0.02537876
+Iteration 3800 | Log-Likelihood:  -251.8636 | MSE: 0.004393 | beta change: 0.02526369
+Iteration 3900 | Log-Likelihood:  -246.0833 | MSE: 0.004379 | beta change: 0.02513427
+Iteration 4000 | Log-Likelihood:  -240.3729 | MSE: 0.004365 | beta change: 0.02498946
+Iteration 4100 | Log-Likelihood:  -234.7383 | MSE: 0.004351 | beta change: 0.02482801
+Iteration 4200 | Log-Likelihood:  -229.1860 | MSE: 0.004336 | beta change: 0.02464842
+Iteration 4300 | Log-Likelihood:  -223.7231 | MSE: 0.004321 | beta change: 0.02444895
+Iteration 4400 | Log-Likelihood:  -218.3577 | MSE: 0.004306 | beta change: 0.02422752
+Iteration 4500 | Log-Likelihood:  -213.0984 | MSE: 0.004290 | beta change: 0.02398171
+Iteration 4600 | Log-Likelihood:  -207.9550 | MSE: 0.004274 | beta change: 0.02370873
+Iteration 4700 | Log-Likelihood:  -202.9381 | MSE: 0.004258 | beta change: 0.02340538
+Iteration 4800 | Log-Likelihood:  -198.0593 | MSE: 0.004241 | beta change: 0.02306798
+Iteration 4900 | Log-Likelihood:  -193.3315 | MSE: 0.004225 | beta change: 0.02269242
+Iteration 5000 | Log-Likelihood:  -188.7685 | MSE: 0.004208 | beta change: 0.02227409
+Iteration 5100 | Log-Likelihood:  -184.3853 | MSE: 0.004191 | beta change: 0.02180796
+Iteration 5200 | Log-Likelihood:  -180.1976 | MSE: 0.004175 | beta change: 0.02128863
+Iteration 5300 | Log-Likelihood:  -176.2222 | MSE: 0.004159 | beta change: 0.02071047
+Iteration 5400 | Log-Likelihood:  -172.4760 | MSE: 0.004143 | beta change: 0.02006786
+Iteration 5500 | Log-Likelihood:  -168.9760 | MSE: 0.004127 | beta change: 0.01935555
+Iteration 5600 | Log-Likelihood:  -165.7382 | MSE: 0.004113 | beta change: 0.01856910
+Iteration 5700 | Log-Likelihood:  -162.7772 | MSE: 0.004099 | beta change: 0.01770555
+Iteration 5800 | Log-Likelihood:  -160.1045 | MSE: 0.004086 | beta change: 0.01676417
+Iteration 5900 | Log-Likelihood:  -157.7279 | MSE: 0.004074 | beta change: 0.01574733
+Iteration 6000 | Log-Likelihood:  -155.6498 | MSE: 0.004064 | beta change: 0.01466128
+Iteration 6100 | Log-Likelihood:  -153.8664 | MSE: 0.004054 | beta change: 0.01351684
+Iteration 6200 | Log-Likelihood:  -152.3669 | MSE: 0.004047 | beta change: 0.01232962
+Iteration 6300 | Log-Likelihood:  -151.1335 | MSE: 0.004040 | beta change: 0.01111961
+Iteration 6400 | Log-Likelihood:  -150.1424 | MSE: 0.004035 | beta change: 0.00991009
+Iteration 6500 | Log-Likelihood:  -149.3649 | MSE: 0.004031 | beta change: 0.00872589
+Iteration 6600 | Log-Likelihood:  -148.7694 | MSE: 0.004028 | beta change: 0.00759110
+Iteration 6700 | Log-Likelihood:  -148.3242 | MSE: 0.004025 | beta change: 0.00652695
+Iteration 6800 | Log-Likelihood:  -147.9987 | MSE: 0.004024 | beta change: 0.00554991
+Iteration 6900 | Log-Likelihood:  -147.7659 | MSE: 0.004023 | beta change: 0.00467077
+Iteration 7000 | Log-Likelihood:  -147.6026 | MSE: 0.004022 | beta change: 0.00389435
+Iteration 7100 | Log-Likelihood:  -147.4900 | MSE: 0.004022 | beta change: 0.00322018
+Iteration 7200 | Log-Likelihood:  -147.4136 | MSE: 0.004022 | beta change: 0.00264354
+Iteration 7300 | Log-Likelihood:  -147.3625 | MSE: 0.004022 | beta change: 0.00215673
+Iteration 7400 | Log-Likelihood:  -147.3286 | MSE: 0.004022 | beta change: 0.00175035
+Iteration 7500 | Log-Likelihood:  -147.3064 | MSE: 0.004022 | beta change: 0.00141432
+Iteration 7600 | Log-Likelihood:  -147.2920 | MSE: 0.004022 | beta change: 0.00113865
+Iteration 7700 | Log-Likelihood:  -147.2826 | MSE: 0.004022 | beta change: 0.00091397
+Iteration 7800 | Log-Likelihood:  -147.2766 | MSE: 0.004022 | beta change: 0.00073184
+Iteration 7900 | Log-Likelihood:  -147.2728 | MSE: 0.004022 | beta change: 0.00058485
+Iteration 8000 | Log-Likelihood:  -147.2703 | MSE: 0.004022 | beta change: 0.00046664
+Iteration 8100 | Log-Likelihood:  -147.2688 | MSE: 0.004022 | beta change: 0.00037184
+Iteration 8200 | Log-Likelihood:  -147.2678 | MSE: 0.004022 | beta change: 0.00029599
+Iteration 8300 | Log-Likelihood:  -147.2672 | MSE: 0.004022 | beta change: 0.00023543
+Iteration 8400 | Log-Likelihood:  -147.2668 | MSE: 0.004022 | beta change: 0.00018713
+Iteration 8500 | Log-Likelihood:  -147.2665 | MSE: 0.004022 | beta change: 0.00014866
+Iteration 8600 | Log-Likelihood:  -147.2664 | MSE: 0.004022 | beta change: 0.00011805
+Iteration 8700 | Log-Likelihood:  -147.2663 | MSE: 0.004022 | beta change: 0.00009371
+Iteration 8800 | Log-Likelihood:  -147.2662 | MSE: 0.004022 | beta change: 0.00007437
+Iteration 8900 | Log-Likelihood:  -147.2662 | MSE: 0.004022 | beta change: 0.00005901
+Iteration 9000 | Log-Likelihood:  -147.2662 | MSE: 0.004022 | beta change: 0.00004682
+Iteration 9100 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00003713
+Iteration 9200 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00002945
+Iteration 9300 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00002336
+Iteration 9400 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00001852
+Iteration 9500 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00001469
+Iteration 9600 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00001165
+Iteration 9700 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00000924
+Iteration 9800 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00000732
+Iteration 9900 | Log-Likelihood:  -147.2661 | MSE: 0.004022 | beta change: 0.00000581
+
+Final beta coefficients: [-32.68567713  33.91137152  31.5315684 ]
+Final Log-Likelihood: -147.2661
+Final MSE: 0.004022
+
+======================================================================
+PHASE 3: GENERATING DELIVERABLES
+======================================================================
+
+--- Results Table ---
+       X1                  X2 Y (Ground Truth) Sigmoid(P) (Prediction)  Error Squared
+ 0.766017            0.528863                1                0.999953   2.202125e-09
+  0.71293            0.717215                1                0.999999   5.597199e-13
+ 0.267021            0.424508                0                0.000036   1.262074e-09
+ 0.618623            0.681051                1                0.999943   3.282579e-09
+ 0.336745            0.291629                0                0.000006   3.277398e-11
+ 0.622706            0.682757                1                0.999953   2.234708e-09
+ 0.690547             0.67434                1                0.999994   3.815341e-11
+ 0.146099            0.356661                0                     0.0   4.799100e-15
+ 0.309528            0.245396                0                0.000001   2.803102e-13
+ 0.667961            0.663122                1                0.999981   3.581115e-10
+ 0.874068             0.75554                1                     1.0   8.953171e-19
+ 0.243824            0.382772                0                0.000004   1.882610e-11
+ 0.773283            0.711746                1                     1.0   1.318502e-14
+ 0.663593            0.825453                1                     1.0   1.724873e-14
+ 0.816012            0.969917                1                     1.0   6.175764e-23
+ 0.611819            0.681975                1                 0.99993   4.912439e-09
+ 0.905083             0.61299                1                     1.0   8.762003e-16
+ 0.239825            0.479998                0                0.000081   6.603072e-09
+ 0.234228            0.011194                0                     0.0   6.536726e-22
+ 0.354556             0.61286                0                0.207878   4.321333e-02
+          Average Error (MSE)                                            4.022112e-03
+
+Full results saved to: output\results_table.csv
+
+--- Classification Plot ---
+Classification plot saved to: output\classification_plot.png
+
+--- Convergence Plot ---
+Convergence plot saved to: output\convergence_plot.png
+
+======================================================================
+ADVANCED: TESTING ON UNSEEN DATA
+======================================================================
+
+======================================================================
+TESTING ON UNSEEN DATA (GENERALIZATION)
+======================================================================
+
+Test Set Size: 1000 samples
+Test MSE: 0.002997
+Test Accuracy: 0.9960 (99.60%)
+
+Confusion Matrix:
+  True Negatives:   496
+  True Positives:   500
+  False Positives:    4
+  False Negatives:    0
+
+======================================================================
+IMPLEMENTATION COMPLETE!
+======================================================================
+
+Generated files in 'output/' directory:
+  - output/classification_plot.png
+  - output/convergence_plot.png
+  - output/results_table.csv
+
+The model demonstrates:
+Traceback (most recent call last):
+  File "C:\Ai_Expert\L18\L18\main.py", line 101, in <module>
+    main()
+  File "C:\Ai_Expert\L18\L18\main.py", line 94, in main
+    print("  \u2713 Accurate binary classification")
+  File "C:\Users\kobyl\AppData\Local\Programs\Python\Python310\lib\encodings\cp1252.py", line 19, in encode
+    return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+UnicodeEncodeError: 'charmap' codec can't encode character '\u2713' in position 2: character maps to <undefined>
