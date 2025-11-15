@@ -11,16 +11,19 @@ from typing import Dict
 
 
 def plot_classification(X: np.ndarray, y: np.ndarray, p_hat: np.ndarray,
-                       model, output_dir: str = 'output'):
+                       model, output_dir: str = 'output',
+                       X_normalized: np.ndarray = None, norm_params: dict = None):
     """
     Create classification plot with decision boundary.
 
     Args:
-        X: Feature matrix
+        X: Feature matrix (original scale for visualization)
         y: True labels
         p_hat: Predicted probabilities
         model: Trained LogisticRegression model
         output_dir: Directory to save the plot
+        X_normalized: Normalized features used for training (if applicable)
+        norm_params: Normalization parameters (if applicable)
     """
     save_path = os.path.join(output_dir, 'classification_plot.png')
 

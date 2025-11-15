@@ -10,7 +10,6 @@ The codebase has been refactored from a single monolithic file (~590 lines) into
 2. **Single Responsibility**: Each function/class has one clear purpose
 3. **Short Files**: No file exceeds ~250 lines for easy navigation
 4. **Clear Imports**: Package exports via `__init__.py` for clean API
-5. **Maintainability**: Easy to test, modify, and extend
 
 ## Module Breakdown
 

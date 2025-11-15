@@ -3,7 +3,10 @@
     "allow": [
       "Bash(python:*)",
       "Bash(dir:*)",
-      "Bash(output.txt)"
+      "Bash(output.txt)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []
