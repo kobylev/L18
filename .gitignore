@@ -1,5 +1,5 @@
-# Output directory
-output/
+# Output directory - keep the plots for documentation
+# output/
 
 # Python
 __pycache__/
