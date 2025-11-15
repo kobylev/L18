@@ -543,7 +543,7 @@ This section shows what the actual output plots look like and explains what each
 
 **Actual Plot:**
 
-![Classification Plot](output/classification_plot.png)
+![Classification Plot](./output/classification_plot.png)
 
 **What you see in the plot above:**
 
@@ -587,7 +587,7 @@ This linear boundary perfectly separates the two clusters because:
 
 **Actual Plot:**
 
-![Convergence Plot](output/convergence_plot.png)
+![Convergence Plot](./output/convergence_plot.png)
 
 **What you see in the plot above:**
 
