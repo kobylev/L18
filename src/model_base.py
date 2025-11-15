@@ -22,7 +22,9 @@ class LogisticRegressionBase:
 
     def __init__(self, learning_rate: float = 0.03, n_iterations: int = 10000,
                  tolerance: float = 1e-6, batch_size: int = None,
-                 regularization: str = None, lambda_reg: float = 0.01):
+                 regularization: str = None, lambda_reg: float = 0.01,
+                 early_stopping: bool = False, patience: int = 10,
+                 validation_split: float = 0.2):
         """
         Initialize the Logistic Regression base model.
 
@@ -33,6 +35,9 @@ class LogisticRegressionBase:
             batch_size: Size of mini-batches (None = full batch gradient ascent)
             regularization: Regularization type ('l1', 'l2', or None)
             lambda_reg: Regularization strength (higher = more regularization)
+            early_stopping: Whether to use early stopping based on validation loss
+            patience: Number of iterations to wait for improvement before stopping
+            validation_split: Fraction of training data to use for validation (0.0-1.0)
         """
         self.learning_rate = learning_rate
         self.n_iterations = n_iterations
@@ -40,14 +45,22 @@ class LogisticRegressionBase:
         self.batch_size = batch_size
         self.regularization = regularization
         self.lambda_reg = lambda_reg
+        self.early_stopping = early_stopping
+        self.patience = patience
+        self.validation_split = validation_split
         self.beta = None
         self.history = {
             'log_likelihood': [],
             'mse': [],
             'beta_0': [],
             'beta_1': [],
-            'beta_2': []
+            'beta_2': [],
+            'val_log_likelihood': [],
+            'val_mse': []
         }
+        self.best_beta = None
+        self.best_val_loss = None
+        self.stopped_epoch = None
 
     @staticmethod
     def sigmoid(z: np.ndarray) -> np.ndarray:
