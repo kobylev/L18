@@ -1103,5 +1103,5 @@ This elegant form arises from the derivative of the sigmoid function:
 This implementation is for educational purposes following the PRD specifications.
 
 ## Author
-
+Koby Lev
 Implementation based on PRD requirements for manual Logistic Regression.
