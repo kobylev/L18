@@ -65,6 +65,11 @@
 | **Architecture** | Modular design (8 separate modules) | ✅ |
 | | Extensive documentation (6 MD files) | ✅ |
 | | Test set validation | ✅ |
+| **Testing** | Comprehensive unit test suite (52 tests) | ✅ |
+| | Sigmoid function tests | ✅ |
+| | Gradient calculation tests | ✅ |
+| | Loss function tests | ✅ |
+| | Data generation & normalization tests | ✅ |
 
 ## Quick Demo
 
@@ -144,6 +149,12 @@ L18/
 │   ├── visualization.py       # Plotting functions (104 lines)
 │   ├── evaluation.py          # Testing and metrics (97 lines)
 │   └── utils.py               # Helper functions (23 lines)
+├── tests/                      # Unit test suite (52 tests, 100% passing)
+│   ├── README.md              # Test documentation
+│   ├── run_tests.py           # Test runner
+│   ├── test_model.py          # Core model tests (sigmoid, gradients, predictions)
+│   ├── test_loss.py           # Loss function tests (log-likelihood, MSE)
+│   └── test_data_utils.py     # Data generation & normalization tests
 └── output/                     # Generated output files (created automatically)
     ├── results_table.csv       # Predictions and error metrics
     ├── classification_plot.png # Classification visualization
@@ -217,6 +228,40 @@ x1, x2 = model.get_decision_boundary((0, 1))
 plot_classification(X, y, probabilities, model, output_dir)
 plot_convergence(model.history, output_dir)
 ```
+
+## Testing
+
+The project includes a comprehensive unit test suite with 52 tests covering all core functionality.
+
+### Running Tests
+
+```bash
+# Run all tests
+cd tests
+python run_tests.py
+
+# Verbose output
+python run_tests.py -v
+
+# Run specific test file
+python -m unittest test_model
+python -m unittest test_loss
+python -m unittest test_data_utils
+```
+
+### Test Coverage
+
+| Category | Tests | Coverage |
+|----------|-------|----------|
+| **Sigmoid Function** | 7 tests | Correctness, bounds, symmetry, known values |
+| **Gradient Calculation** | 4 tests | Ascent direction, convergence, bias term |
+| **Loss Functions** | 11 tests | Log-likelihood, MSE, training improvement |
+| **Predictions** | 5 tests | Probability bounds, binary output, thresholds |
+| **Data Generation** | 7 tests | Shape, balance, reproducibility, separation |
+| **Normalization** | 18 tests | Z-score, Min-Max, edge cases, inverse transform |
+| **Total** | **52 tests** | **100% passing** |
+
+See [tests/README.md](tests/README.md) for detailed test documentation.
 
 ## Output Files
 
